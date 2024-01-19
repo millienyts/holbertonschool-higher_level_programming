@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
-for char in range(ord('a'), ord('z') + 1):
-    if chr(char) not in ['q', 'e']:
-        print(chr(char), end='')
+for letter in range(97, 123):
+    if letter != 101 and letter != 113:
+        print('{}'.format(chr(letter)), end='')
