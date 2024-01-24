@@ -2,7 +2,7 @@
 def delete_at(my_list=[], idx=0):
     if idx < 0 or idx >= len(my_list):
         return my_list.copy()
-    new_list = [val for i, val in enumerate(my_list) if i != idx]
+    new_list = my_list[:idx] + my_list[idx+1:]
     return new_list
 
 # Test the function
