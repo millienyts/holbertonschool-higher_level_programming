@@ -2,8 +2,7 @@
 def roman_to_int(roman_string):
     if not roman_string or not isinstance(roman_string, str):
         return 0
-
-     roman_numerals = {
+     roman_to_int = {
         'I': 1,
         'V': 5,
         'X': 10,
@@ -12,9 +11,10 @@ def roman_to_int(roman_string):
         'D': 500,
         'M': 1000
     }
-
     result = 0
-    prev_value = 0
-
-    for char in reversed(roman_string):
-        value = roman_numerals[char]
+    for i in range(len(roman_string)):
+        if i > 0 and roman_to_int[roman_string[i]] > roman_to_int[roman_string[i - 1]]:
+            result += roman_to_int[roman_string[i]] - 2 * roman_to_int[roman_string[i - 1]]
+        else:
+            result += roman_to_int[roman_string[i]]
+    return result
