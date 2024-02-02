@@ -1,25 +1,23 @@
 #!/usr/bin/python3
 """
-Divide matrix function
+Module to print "My name is <first name> <last name>"
 """
 
 
-def matrix_divided(matrix, div):
+def say_my_name(first_name, last_name=""):
     """
-    Function that divdes a matrix
+    Function to print "My name is <first name> <last name>"
+    
+    Args:
+        first_name (str): First name
+        last_name (str): Last name (default is empty)
+    
+    Raises:
+        TypeError: If first_name or last_name is not a string
     """
+    if type(first_name) is not str:
+        raise TypeError("first_name must be a string")
+    if type(last_name) is not str:
+        raise TypeError("last_name must be a string")
 
-    errormsg = "matrix must be a matrix (list of lists) of integers/floats"
-    if not all(isinstance(row, list)
-               and all(isinstance(element, (int, float))
-                       for element in row) for row in matrix):
-        raise TypeError(errormsg)
-    if not all(len(row) == len(matrix[0]) for row in matrix):
-        raise TypeError("Each row of the matrix must have the same size")
-    if not isinstance(div, (int, float)):
-        raise TypeError("div must be a number")
-    if div == 0:
-        raise ZeroDivisionError("division by zero")
-    result_matrix = [[round(element / div, 2)
-                      for element in row] for row in matrix]
-    return result_matrix
+    print("My name is {} {}".format(first_name, last_name))
