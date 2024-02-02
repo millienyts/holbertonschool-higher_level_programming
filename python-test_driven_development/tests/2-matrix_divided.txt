@@ -10,39 +10,36 @@ matrix = [
     [1, 2, 3],
     [4, 5, 6]
 ]
+#doctest: [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 print(matrix_divided(matrix, 3))
 
 # Edge cases
+#doctest: matrix must be a matrix (list of lists) of integers/floats
 try:
     print(matrix_divided(123, 3))
 except Exception as e:
     print(e)
 
+#doctest: matrix must be a matrix (list of lists) of integers/floats
 try:
     print(matrix_divided([[1, 2, 3], [4, 5, 6], [7, 8, "a"]], 2))
 except Exception as e:
     print(e)
 
+#doctest: Each row of the matrix must have the same size
 try:
     print(matrix_divided([[1, 2, 3], [4, 5], [6, 7, 8]], 2))
 except Exception as e:
     print(e)
 
+#doctest: matrix must be a matrix (list of lists) of integers/floats
 try:
     print(matrix_divided([[1, 2, 3], [4, 5, 6]], "string"))
 except Exception as e:
     print(e)
 
+#doctest: division by zero
 try:
     print(matrix_divided([[1, 2, 3], [4, 5, 6]], 0))
 except Exception as e:
     print(e)
-
-# Expected outputs
-"""
-[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
-matrix must be a matrix (list of lists) of integers/floats
-Each row of the matrix must have the same size
-matrix must be a matrix (list of lists) of integers/floats
-matrix must be a matrix (list of lists) of integers/floats
-division by zero
