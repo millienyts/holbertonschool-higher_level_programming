@@ -1,0 +1,35 @@
+The ``say_my_name`` doctest
+===========================
+This module provides a fucntion to divide matrix,
+and store divided values in a lists of lists,
+matrix has to be a a lists of lists, and divisor number
+can't be zero or a string:
+
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+>>> firts_name = "yahdiel"
+>>> last_name = "bitcoin"
+>>> say_my_name(firts_name, last_name)
+yahdiel bitcoin
+
+
+>>> firts_name = 21
+>>> last_name = "bitcoin"
+>>> say_my_name(firts_name, last_name)
+Traceback (most recent call):
+...
+firts_name must be a string
+
+>>> firts_name = None
+>>> last_name = None
+>>> say_my_name(firts_name, last_name)
+Traceback (most recent call):
+...
+firts_name must be a string
+
+>>> firts_name = yahdiel
+>>> last_name = 330
+>>> say_my_name(firts_name, last_name)
+Traceback (most recent call):
+...
+last_name must be a string
