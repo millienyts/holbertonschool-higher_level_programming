@@ -2,6 +2,7 @@
 
 """100-my_int module"""
 
+
 class MyInt(int):
     """A class representing an integer with inverted equality operators.
 
@@ -12,7 +13,7 @@ class MyInt(int):
         __eq__(self, other): Overrides the equality operator.
         __ne__(self, other): Overrides the inequality operator.
     """
-    
+
     def __eq__(self, other):
         """Overrides the equality operator."""
         return super().__ne__(other)
