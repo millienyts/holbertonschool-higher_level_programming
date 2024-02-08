@@ -92,4 +92,4 @@ TypeError: integer_validator() missing 1 required positional argument: 'value'
 >>> ar.integer_validator("integer", 2, 2)
 Traceback (most recent call last):
 ...
-TypeError: integer_validator() takes 3 positional arguments but 4 were 
+TypeError: integer_validator() takes 3 positional arguments but 4 were given 
