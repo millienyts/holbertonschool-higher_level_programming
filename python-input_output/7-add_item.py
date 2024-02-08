@@ -2,25 +2,20 @@
 """
 Add item module
 """
-
 import sys
 import os.path
 
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
-def add_item():
-    """
-    Add item function
-    """
-    filename = 'add_item.json'
-    if os.path.exists(filename):
-        with open(filename, mode='r', encoding='utf-8') as f:
-            items = json.load(f)
-    else:
-        items = []
-    items.extend(sys.argv[1:])
-    with open(filename, mode='w', encoding='utf-8') as f:
-        json.dump(items, f)
+filename = "add_item.json"
 
+if os.path.exists(filename):
+    my_list = load_from_json_file(filename)
+else:
+    my_list = []
 
-if __name__ == "__main__":
-    add_item()
+for arg in sys.argv[1:]:
+    my_list.append(arg)
+
+save_to_json_file(my_list, filename)
