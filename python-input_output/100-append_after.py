@@ -2,13 +2,13 @@
 
 def append_after(filename="", search_string="", new_string=""):
     """
-    Append new_string after each occurrence of search_string in the file
+    Inserts new_string after each line containing search_string
     """
-    with open(filename, 'r') as file:
-        lines = file.readlines()
+    with open(filename, mode='r', encoding='utf-8') as f:
+        lines = f.readlines()
 
-    with open(filename, 'w') as file:
+    with open(filename, mode='w', encoding='utf-8') as f:
         for line in lines:
-            file.write(line)
+            f.write(line)
             if search_string in line:
-                file.write(new_string)
+                f.write(new_string)
