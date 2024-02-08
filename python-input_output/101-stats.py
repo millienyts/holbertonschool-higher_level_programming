@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Log Parsing Module
+"""
 import sys
 
 def print_metrics(total_size, status_codes):
