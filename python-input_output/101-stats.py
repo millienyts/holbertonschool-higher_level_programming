@@ -48,7 +48,6 @@ def main():
 
     except KeyboardInterrupt:
         print_metrics(total_size, status_codes)
-        raise
 
 if __name__ == "__main__":
     main()
