@@ -9,8 +9,9 @@ def print_metrics(total_size, status_codes):
     Print the metrics calculated so far
     """
     print("File size: {}".format(total_size))
-    for code in sorted(status_codes.keys()):
-        if status_codes[code] != 0:
+    sorted_codes = sorted(status_codes.keys())
+    for code in sorted_codes:
+        if status_codes[code] > 0:
             print("{}: {}".format(code, status_codes[code]))
 
 def parse_line(line):
