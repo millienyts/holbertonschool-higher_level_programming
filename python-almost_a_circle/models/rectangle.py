@@ -4,13 +4,30 @@
 
 from models.base import Base
 
+
 class Rectangle(Base):
+    """comment"""
     def __init__(self, width, height, x=0, y=0, id=None):
+        self.validator(width, "width")
+        self.validator(height, "height")
+        self.validator(x, "x")
+        self.validator(y, "y")
         super().__init__(id)
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
+        self.__width = width
+        self.__height = height
+        self.__x = x
+        self.__y = y
+
+    def validator(self, value, name):
+        """comment"""
+        if type(value) is not int:
+            raise TypeError(f"{name} must be an integer")
+        if name == "width" or name == "height":
+            if value <= 0:
+                raise ValueError(f"{name} must be > 0")
+        else:
+            if value < 0:
+                raise ValueError(f"{name} must be >= 0")
 
     @property
     def width(self):
@@ -18,6 +35,7 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
+        self.validator(value, "width")
         self.__width = value
 
     @property
@@ -26,7 +44,12 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
+        self.validator(value, "height")
         self.__height = value
+
+    def area(self):
+        """comment"""
+        return self.__height * self.__width
 
     @property
     def x(self):
@@ -34,6 +57,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
+        self.validator(value, "x")
         self.__x = value
 
     @property
@@ -42,35 +66,44 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
+        self.validator(value, "y")
         self.__y = value
 
-    def area(self):
-        return self.width * self.height
-
     def display(self):
-        for _ in range(self.y):
+        """comment"""
+        for _ in range(self.__y):
             print()
-        for _ in range(self.height):
-            print(" " * self.x + "#" * self.width)
+        for row in range(self.__height):
+            print(" " * self.__x, end="")
+            print("#" * self.__width)
 
     def __str__(self):
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+        """comment"""
+        x = self.__x
+        y = self.__y
+        w = self.__width
+        h = self.__height
+        return f"[Rectangle] ({self.id}) {x}/{y} - {w}/{h}"
 
     def update(self, *args, **kwargs):
+        """comment"""
+        my_list = ['id', 'width', 'height', 'x', 'y']
         if args:
-            attrs = ['id', 'width', 'height', 'x', 'y']
-            for attr, value in zip(attrs, args):
-                setattr(self, attr, value)
+            for name, value in zip(my_list, args):
+                setattr(name, value)
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
     def to_dictionary(self):
+        """comment"""
         return {
             'id': self.id,
-            'width': self.width,
-            'height': self.height,
-            'x': self.x,
-            'y': self.y
-        }
+            'width': self.__width,
+            'height': self.__height,
+            'x': self.__x,
+            'y': self.__y
+            }
 
+    def __repr__(self):
+        return str(self.to_dictionary())
