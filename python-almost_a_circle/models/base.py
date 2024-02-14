@@ -39,3 +39,19 @@ class Base:
         json_str = cls.to_json_string(json_list)
         with open(filename, "w") as file:
             file.write(json_str)
+
+     @classmethod
+    def load_from_file(cls):
+        """comment"""
+        filename = f"{cls.__name__}.json"
+        if not filename:
+            return []
+        with open(filename, "r") as file:
+            data = file.read()
+            if not data:
+                return []
+            else:
+                return [
+                    cls.from_json_string(json.dumps(obj))
+                    for obj in json.loads(data)
+                ]
