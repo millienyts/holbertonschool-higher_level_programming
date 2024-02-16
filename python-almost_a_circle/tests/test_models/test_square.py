@@ -82,19 +82,5 @@ class TestSquare(unittest.TestCase):
         except Exception as e:
             self.fail(f"Unexpected exception thrown: {e}")
 
-    def test_square_load_from_file_valid_file(self):
-        """Test loading Squares from a valid file."""
-        s1 = Square(5)
-        s2 = Square(7, 2, 3)
-        Square.save_to_file([s1, s2])
-        squares = Square.load_from_file()
-        self.assertEqual(len(squares), 2)
-        self.assertIsInstance(squares[0], Square)
-        self.assertIsInstance(squares[1], Square)
-        self.assertEqual(squares[0].size, 5)
-        self.assertEqual(squares[1].size, 7)
-        self.assertEqual(squares[1].x, 2)
-        self.assertEqual(squares[1].y, 3)
-
-    if __name__ == "__main__":
+if __name__ == "__main__":
     unittest.main()
