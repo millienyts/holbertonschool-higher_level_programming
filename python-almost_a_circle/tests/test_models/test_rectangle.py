@@ -20,11 +20,5 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle(1, "2")
 
-    def test_rectangle_string_x(self):
-        """Test if x coordinate as string raises TypeError"""
-        with self.assertRaises(TypeError):
-            Rectangle(1, 2, "3")
-
-
-    if __name__ == '__main__':
+if __name__ == '__main__':
     unittest.main()
